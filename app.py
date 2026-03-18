@@ -5,13 +5,6 @@ app = Flask(__name__)
 app.config["SECRET_KEY"] = "secret_key"
 users = {}
 
-db_url = os.environ.get("DATABASE_URL")
-
-if db_url and db_url.startswith("postgres://"):
-    db_url = db_url.replace("postgres://", "postgresql://", 1)
-app.config["SQLALCHEMY_DATABASE_URI"] = db_url
-
-
 @app.route("/", methods=["GET", "POST"])
 @app.route("/login", methods=["GET", "POST"])
 def login():
